@@ -16,6 +16,7 @@ header {
   opacity: .9;
   margin-bottom: 10px;
   line-height: 50px;
+  box-shadow: 0px 1px 5px #888888;
 }
 
 header h1.logo {
@@ -36,7 +37,7 @@ header h1.logo:hover {
  */
   
 .container {
-  width: 940px;
+  width: 1100px;
   margin: 0 auto;
 }
  
@@ -81,8 +82,34 @@ h3 {
   text-decoration: none;
 }
 
-.test{
+.menu li a:hover{
+	color: #FF5722;
+}
+
+/*
+* CSS for submit form
+*/
+.submit{
 	width: 940px;
   	margin: 0 auto;
   	text-align: center;
+}
+
+#submit {
+    background-color: #FF5722;
+    border-radius:3px;
+    margin: 30px auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    padding: 10px;
+    color: #fff;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+}
+
+#submit:hover {
+    border: none;
+    box-shadow: 0px 0px 1px #777;
 }
