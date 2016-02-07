@@ -8,6 +8,13 @@ app = Flask(__name__)
 def home():
 	return render_template('mainpage.html')
 
+@app.route('/login/', methods=['POST'])
+def login():
+	account_sid = request.form['sid']
+	auth_token = request.form['auth_token']
+	phoneNumber = request.form['number']
+	return redirect('/')
+
 @app.route("/call-phone/", methods=['POST'])
 def callPhone():
 	phoneNumber = request.form['yourNumber']

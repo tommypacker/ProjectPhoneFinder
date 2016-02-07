@@ -6,7 +6,43 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
     <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.login-window').click(function() {
+        
+                //Getting the variable's value from a link 
+        var loginBox = $(this).attr('href');
+
+        //Fade in the Popup
+        $(loginBox).fadeIn(300);
+        
+        //Set the center alignment padding + border see css style
+        var popMargTop = ($(loginBox).height() + 24) / 2; 
+        var popMargLeft = ($(loginBox).width() + 24) / 2; 
+        
+        $(loginBox).css({ 
+            'margin-top' : -popMargTop,
+            'margin-left' : -popMargLeft
+        });
+        
+        // Add the mask to body
+        $('body').append('<div id="mask"></div>');
+        $('#mask').fadeIn(300);
+    
+    return false;
+    });
+
+    // When clicking on the button close or the mask layer the popup closed
+    $('a.close, #mask').live('click', function() { 
+      $('#mask , .login-popup').fadeOut(300 , function() {
+        $('#mask').remove();  
+    }); 
+    return false;
+    });
+    });
+    </script>
   </head>
   <body>
     <header>
@@ -14,13 +50,35 @@
         <strong><nav>
           <ul class="menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="#login-box" class="login-window">Login</a></li>
           </ul>
         </nav></strong>
       </div>
+
       <div class="container">
         <h1 class="logo">Lost My Phone</h1>
       </div>
-    </header> 
+    </header>
+
+     <div id="login-box" class="login-popup">
+        <form method="post" class="signin" action="/login/">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label class="mdl-textfield__label">Twilio Account_SID: </label>
+                <input type="text" name="sid" size="35" class="mdl-textfield__input"/>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label class="mdl-textfield__label">Twilio Auth Token: </label>
+                <input type="text" name="auth_token" size="35" class="mdl-textfield__input"/>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label class="mdl-textfield__label">Phone Number (Digits Only): </label>
+                <input type="text" name="number" size="35" class="mdl-textfield__input"/>
+              </div>
+              <p><input type="submit" value="Submit" id="submit"/></p>       
+              </fieldset>
+        </form>
+      </div>
+
     <div class="container">
       {% block callform %}
       {% endblock %}
