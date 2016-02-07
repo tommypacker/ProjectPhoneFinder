@@ -23,6 +23,8 @@ def login():
 
 @app.route("/call-phone/", methods=['POST'])
 def callPhone():
+	if phoneNumber == "" or auth_token == "" or account_sid == "":
+		return redirect('/')
 	client=TwilioRestClient(account_sid, auth_token)
 	formattedNum = "+1"+phoneNumber
 	call = client.calls.create(to=formattedNum, from_="+16505138187", url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")

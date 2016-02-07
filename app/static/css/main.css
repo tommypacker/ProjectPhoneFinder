@@ -88,7 +88,7 @@ h3 {
 }
 
 /*
-* CSS for submit form
+* CSS for call button form
 */
 .submit{
 	width: 940px;
@@ -112,24 +112,6 @@ h3 {
 #submit:hover {
     border: none;
     box-shadow: 0px 0px 1px #777;
-}
-
-/*
-* Material Design text field
-*/
-.mdl-layout {
-    align-items: center;
-    justify-content: center;
-}
-.mdl-layout__content {
-    padding: 24px;
-    flex: none;
-    line-height: 18px;
-}
-.mdl-textfield__error {
-    width: 100%;
-    left: 0;
- 	text-align: left;
 }
 
 /* Mask for background, by default is not display */
@@ -171,47 +153,8 @@ h3 {
     /* Safari, Chrome */;
 }
 
-fieldset {
-    border: none;
+#submitButton{
+	color: #ffffff;
 }
 
-form.signin .textbox label {
-    display: block;
-    padding-bottom: 7px;
-}
-
-form.signin .textbox span {
-    display: block;
-}
-
-form.signin p, form.signin span {
-    color: #FFFFFF;
-    font-size: 11px;
-    line-height: 18px;
-}
-
-form.signin .textbox input {
-    background: #686868;
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #000;
-    border-right: 1px solid #333;
-    border-top: 1px solid #000;
-    color: #fff;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    font: 13px Arial, Helvetica, sans-serif;
-    padding: 6px 6px 4px;
-    width: 200px;
-}
-
-form.signin input:-moz-placeholder {
-    color: #bbb;
-    text-shadow: 0 0 2px #000;
-}
-
-form.signin input::-webkit-input-placeholder {
-    color: #bbb;
-    text-shadow: 0 0 2px #000;
-}
 
