@@ -1,15 +1,15 @@
 {% extends "layout.html"%}
 {% block callform %}
   <div class="jumbo">
-  	<h2>Welcome to Lost my Phone</h2>
+  	<h2>Welcome To Lost My Phone</h2>
   	<h3>If you've lost your phone, you can call it from here</h3>
   </div>
   <div class="submit">
     <form method="post" action="/call-phone/"> <!--telling the form where to send user input-->
-
-    <label>Enter Your Phone Number (Please use no characters): </label>
-    <input type="text" name="yourNumber" size="40" />
-
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <label class="mdl-textfield__label">Phone Number (Digits Only): </label>
+        <input type="text" name="yourNumber" size="40" class="mdl-textfield__input"/>
+    </div>
     <p><input type="submit" value="Call Phone" id="submit"/></p>
     </form>
   </div>
