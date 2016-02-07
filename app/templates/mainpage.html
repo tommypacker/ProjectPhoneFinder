@@ -1,0 +1,16 @@
+{% extends "layout.html"%}
+{% block test %}
+  <div class="jumbo">
+  	<h2>Welcome to "Lost my Phone"</h2>
+  	<h3>If you've lost your phone, you can call it from here</h3>
+  </div>
+  <div id="form">
+    <form method="post" action="/call-phone/"> <!--telling the form where to send user input-->
+
+    <label>Enter Your Phone Number (Please use no characters): </label>
+    <input type="text" name="yourNumber" size="40" />
+
+    <p><input type="submit" value="Call Phone"  /></p>
+    </form>
+  </div>
+{% endblock %}

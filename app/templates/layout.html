@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lost My Phone</title>   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+   
+    <header>
+      <div class="container">
+        <h1 class="logo">Lost My Phone</h1>
+      </div>
+    </header> 
+    <div class="container">
+      {% block test %}
+      {% endblock %}
+    </div>
+</html>
