@@ -5,7 +5,7 @@ body {
 }
 
 /*
- * Create dark grey header with a white logo
+ * Create light blue header with a white logo
  */
   
 header {
@@ -124,6 +124,7 @@ h3 {
 .mdl-layout__content {
     padding: 24px;
     flex: none;
+    line-height: 18px;
 }
 .mdl-textfield__error {
     width: 100%;

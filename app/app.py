@@ -1,8 +1,11 @@
 from flask import Flask, render_template, redirect, request
 from twilio.rest import TwilioRestClient
-from twilio_creds import account_sid, auth_token, client
 
 app = Flask(__name__)
+
+phoneNumber = ""
+auth_token = ""
+account_sid = ""
 
 @app.route('/')
 def home():
@@ -10,14 +13,17 @@ def home():
 
 @app.route('/login/', methods=['POST'])
 def login():
+	global account_sid
 	account_sid = request.form['sid']
+	global auth_token
 	auth_token = request.form['auth_token']
+	global phoneNumber
 	phoneNumber = request.form['number']
 	return redirect('/')
 
 @app.route("/call-phone/", methods=['POST'])
 def callPhone():
-	phoneNumber = request.form['yourNumber']
+	client=TwilioRestClient(account_sid, auth_token)
 	formattedNum = "+1"+phoneNumber
 	call = client.calls.create(to=formattedNum, from_="+16505138187", url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
 	return redirect('/making-call/')
