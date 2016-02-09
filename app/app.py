@@ -4,9 +4,10 @@ from twilio.rest import TwilioRestClient
 
 app = Flask(__name__)
 
-phoneNumber = ""
+twilioPhoneNumber = ""
 auth_token = ""
 account_sid = ""
+numberToCall = ""
 
 @app.route('/')
 def home():
@@ -18,17 +19,21 @@ def login():
     account_sid = request.form['sid']
     global auth_token
     auth_token = request.form['auth_token']
-    global phoneNumber
-    phoneNumber = request.form['number']
+    global twilioPhoneNumber
+    twilioPhoneNumber = "+1" + request.form['number']
     return redirect('/')
 
 @app.route("/call-phone/", methods=['POST'])
 def callPhone():
-    if phoneNumber == "" or auth_token == "" or account_sid == "":
+    if twilioPhoneNumber == "" or auth_token == "" or account_sid == "":
         return redirect('/')
     client=TwilioRestClient(account_sid, auth_token)
-    formattedNum = "+1"+phoneNumber
-    call = client.calls.create(to=formattedNum, from_="+16505138187", url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
+    global numberToCall
+    numberToCall = request.form['numberToCall']
+    if numberToCall == "":
+        return redirect('/')
+    formattedNum = "+1" + numberToCall
+    call = client.calls.create(to=formattedNum, from_=twilioPhoneNumber, url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
     return redirect('/making-call/')
 
 @app.route("/making-call/")
